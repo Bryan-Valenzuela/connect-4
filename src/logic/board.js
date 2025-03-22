@@ -1,6 +1,17 @@
-import {COLUMS} from '../constants.js'
+import {COLUMNS} from '../constants.js'
 
-
+export const positionChips = (board, index) => {
+    //buscamos a que columna pertenece
+    const currentColumn = COLUMNS.findIndex(column => column.includes(index)) 
+    const colums = COLUMNS[currentColumn]
+    
+    //busca espacio desde la fila de abajo
+    for (let i = colums.length - 1; i>=0; i--){
+        const position = colums[i]
+        
+        if (!board[position]) return position
+    } 
+}
 
 export const checkWinnerFrom = (boardToCheck) => {
     //comprobamos que si se forma un ganador 
@@ -23,7 +34,7 @@ export const checkWinnerFrom = (boardToCheck) => {
                 player === boardToCheck[index+3] 
             ){
                 
-                return true
+                return player
             }
 
             //verificar vertical
@@ -32,7 +43,7 @@ export const checkWinnerFrom = (boardToCheck) => {
                 player === boardToCheck[index+2 * cols] &&
                 player === boardToCheck[index+3 * cols] 
             ){
-                return true
+                return player
             }
 
             //verificar diagonal \
@@ -41,7 +52,7 @@ export const checkWinnerFrom = (boardToCheck) => {
                 player === boardToCheck[index+2 * cols + 2] &&
                 player === boardToCheck[index+3 * cols + 3] 
             ){
-                return true
+                return player
             }
 
             //verificar diagonal /
@@ -50,7 +61,7 @@ export const checkWinnerFrom = (boardToCheck) => {
                 player === boardToCheck[index+2 * cols - 2] &&
                 player === boardToCheck[index+3 * cols - 3] 
             ){
-                return true
+                return player
             }
 
 

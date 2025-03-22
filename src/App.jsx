@@ -3,7 +3,7 @@ import confetti from 'canvas-confetti'
 
 import { Square } from './Components/Square.jsx'
 import { TURNS } from './constants.js'
-import { checkWinnerFrom, checkEndGame } from './logic/board.js'
+import { checkWinnerFrom, checkEndGame , positionChips} from './logic/board.js'
 import { WinnerModal } from './Components/WinnerModal.jsx'
 import { saveGameToStorage, resetGameStorage } from './logic/Storage.js'
 import './App.css'
@@ -40,8 +40,9 @@ function App() {
     if (board[index] || winner) return
 
     //actualizamos el tablero 
+    const newPosition = positionChips(board, index)
     const newBoard = [...board]
-    newBoard[index] = turn //turn es igual a 🔴 o 🟡
+    newBoard[newPosition] = turn //turn es igual a 🔴 o 🟡
     setBoard(newBoard)
 
     //cambiamos el turno
@@ -77,7 +78,7 @@ function App() {
                 key={index} 
                 index={index} 
                 updateBoard={updateBoard}>
-                  {square}{index}
+                  {square}
               </Square>
             )
           })

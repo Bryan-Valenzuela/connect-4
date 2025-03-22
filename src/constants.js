@@ -3,7 +3,7 @@ export const TURNS = {
     Y: '🟡' 
 }
 
-export const COLUMS = [
+export const COLUMNS = [
     [0, 7, 14, 21, 28, 35],  
     [1, 8, 15, 22, 29, 36],  
     [2, 9, 16, 23, 30, 37],  
