@@ -68,7 +68,7 @@ function App() {
 
   return (
     <main className='board'>
-      <h1>4 in line</h1>
+      <h1>Connect 4</h1>
       <button onClick={resetGame}>Reset</button>
       <section className='game'>
         {
